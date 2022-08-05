@@ -1,0 +1,151 @@
+.app__login {
+    min-width: 40vw;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 1px 15px 10px var(--color-black);
+    border-radius: 20px;
+    margin: 5rem;
+    padding: 1.5rem;
+    color: var(--color-black);
+}
+
+.app__login-title {
+    margin: 0.5rem 0;
+}
+
+.app__login-title h3 {
+    font-family: var(--ff-ubuntu-bold);
+    font-size: 2em;
+}
+
+.app__login-input {
+    margin: 1.5rem 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app__login-input label {
+    font-family: var(--ff-merriweather-black);
+    font-size: 1.1em;
+}
+
+.app__login-input input {
+    margin-left: auto;
+    min-width: 30vw;
+    padding: 0.75rem;
+    font-family: var(--ff-merriweather-regular);
+    font-size: 1em;
+    border-radius: 10px;
+    border-color: var(--color-black);
+}
+
+.app__login-input input:focus {
+    outline-color: var(--color-orange);
+}
+
+.app__login-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.app__login-btns button {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--ff-ubuntu-medium);
+    font-size: 1.1em;
+    background: var(--color-orange);
+    color: var(--color-black);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.4s ease-in;
+}
+
+.app__login-btns button:hover {
+    transform: scale(1.1);
+    background: var(--color-black);
+    color: var(--color-orange);
+}
+
+.app__login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    border: 2px solid var(--color-blue);
+    cursor: pointer;
+    height: 5vh;
+    min-width: 10vw;
+    transition: all 0.4s ease-in;
+}
+
+.app__login-btn svg {
+    width: 30px;
+    height: 30px;
+    margin-left: 0.5rem;
+}
+
+
+.app__login-btn span {
+    background: var(--color-blue);
+    color: var(--color-white);
+    height: 100%;
+    flex: 1;
+    padding: 0.75rem 0.5rem 0.5rem 0.5rem;
+    font-family: var(--ff-merriweather-regular);
+}
+
+.app__login-btn:hover {
+    transform: scale(1.1);
+}
+
+.app__login-footer {
+    margin: 1.5rem;
+    font-family: var(--ff-merriweather-bold);
+    font-size: 1.1em;
+}
+
+.app__login-footer a {
+    color: var(--color-blue);
+}
+
+@keyframes shaker {
+    25%{ transform: translateX(4px); background: var(--color-red); }
+    50%{ transform: translateX(-4px); background: var(--color-white); }
+    75%{ transform: translateX(4px); background: var(--color-red); }
+    100%{ transform: none; background: none; }
+}
+
+@media screen and (max-width: 400px) {
+    .app__login-input label {
+        font-size: 0.75em;
+    }
+
+    .app__login-input input {
+        font-size: 0.75em;
+    }
+
+    .app__login-btns button {
+        padding: 0.75rem;
+        font-size: 0.75em;
+    }
+    
+    .app__login-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .app__login-btn span {
+        font-size: 0.75em;
+    }
+
+    .app__login-footer {
+        font-size: 0.75em;
+    }
+}
