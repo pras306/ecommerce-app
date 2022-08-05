@@ -1,11 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './App.css';
+import { Header } from '../components';
+import Main from './Main/Main';
 
 const App = () => {
   return (
     <div className="app">
-      Welcome to E-Commerce App
+      <Router>
+        <Header />
+        <Main />
+      </Router>
     </div>
   );
 }
