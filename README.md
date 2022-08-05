@@ -19,8 +19,6 @@ This app is currently in development stage and the readme will updated once the 
 
 - React JS
 - Redux Toolkit
-- Node JS
-- Express JS
 - Firebase
 
 [Back to the Top](#e-commerce-web-app)
@@ -41,32 +39,16 @@ Go to the project directory
   cd ecommerce-app
 ```
 
-Install server dependencies
+Install dependencies
 
 ```bash
-  cd server
-  npm install
-```
-
-Install client dependencies
-
-```bash
-  cd client
   npm install
 ```
 
 Start the server
 
 ```bash
-  cd server
   npm run start
-```
-
-Start the server and client
-
-```bash
-  cd server
-  npm run dev
 ```
 
 [Back to the Top](#e-commerce-web-app)
