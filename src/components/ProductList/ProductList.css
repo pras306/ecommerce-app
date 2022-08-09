@@ -1,0 +1,132 @@
+.app__product-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.app__product-list-product {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 20vh;
+    box-shadow: 1px 1px 10px 1px var(--color-black);
+    gap: 2rem;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.app__product-list-product:hover {
+    background: var(--color-black);
+    color: var(--color-orange);
+}
+
+.app__product-list-image {
+    padding: 0.75rem;
+    width: 250px;
+    height: 250px;
+}
+
+.app__product-list-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.app__product-list-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.app__product-list-title {
+    font-family: var(--ff-merriweather-black);
+    font-size: 1.2em;
+    padding: 0.75rem 0;
+}
+
+.app__product-list-rating {
+    display: flex;
+    align-items: center;
+}
+
+.app__product-list-rating svg {
+    width: 30px;
+    height: 30px;
+    color: var(--color-orange);
+}
+
+.app__product-list-price {
+    display: flex;
+    align-items: center;
+    font-family: var(--ff-merriweather-regular);
+    font-size: 1.1em;
+    gap: 2.5rem;
+}
+
+.app__product-list-money {
+    font-family: var(--ff-merriweather-bold);
+    font-size: 1.5em;
+}
+
+.app__product-list-footer {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    gap: 2rem;
+    font-family: var(--ff-merriweather-regular);
+    font-size: 1.1em;
+}
+
+@media screen and (max-width: 900px) {
+    .app__product-list-price {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .app__product-list-money {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app__product-list-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .app__product-list-rating svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .app__product-list-price {
+        font-size: 0.75em;
+    }
+
+    .app__product-list-footer {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-size: 0.75em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .app__product-list-product {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .app__product-list-details {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+    }
+}
