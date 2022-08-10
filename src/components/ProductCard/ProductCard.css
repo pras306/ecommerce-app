@@ -1,0 +1,131 @@
+.app__product {
+    display: flex;
+    margin: 2.5rem;
+    padding: 0.75rem;
+    gap: 8rem;
+    width: 100%;
+    min-height: 40vh;
+}
+
+.app__product-image {
+    width: 500px;
+    height: 500px;
+}
+
+.app__product-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    gap: 1.5rem;
+}
+
+.app__product-content h2 {
+    font-family: var(--ff-ubuntu-bold);
+    font-size: 2em;
+}
+
+.app__product-content span {
+    font-family: var(--ff-ubuntu-medium);
+    font-size: 1.2em;
+}
+
+.app__product-rating {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.app__product-rating svg {
+    width: 30px;
+    height: 30px;
+    color: var(--color-orange);
+}
+
+.app__product-price {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    gap: 2.5rem;
+}
+
+.app__product-money {
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+.app__product-quantity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.app__product-quantity svg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.app__product-btns {
+    padding: 1.5rem;
+    min-width: 10vw;
+    min-height: 5vh;
+}
+
+.app__product-btns button {
+    padding: 1.5rem 0.75rem;
+    width: 100%;
+    height: 100%;
+    font-family: var(--ff-ubuntu-medium);
+    font-size: 1.2em;
+    background: var(--color-orange);
+    color: var(--color-black);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.app__product-btns button:hover {
+    transform: scale(1.1);
+    background: var(--color-black);
+    color: var(--color-orange);
+}
+
+@media screen and (max-width: 900px) {
+    .app__product {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .app__product-image {
+        width: 100%;
+        height: 30vh;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .app__product-content h2 {
+        font-size: 1.5em;
+    }
+
+    .app__product-content span {
+        font-size: 1em;
+    }
+
+    .app__product-rating svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .app__product-price {
+        font-size: 1em;
+    }
+    
+    .app__product-money {
+        font-size: 1.1em;
+    }
+
+    .app__product-quantity svg {
+        width: 20px;
+        height: 20px;
+    }    
+}
