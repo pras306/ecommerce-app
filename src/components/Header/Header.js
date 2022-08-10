@@ -8,6 +8,7 @@ import { signOut } from '../../features/User/UserSlice';
 
 const Header = () => {
     const { username, email, userId } = useSelector(store => store.user);
+    const { quantity } = useSelector(store => store.cart);
     const dispatch = useDispatch();
 
     const handleLogOut = () => {
@@ -44,14 +45,11 @@ const Header = () => {
                 <input type={'text'} placeholder='Search for Products' />
             </div>
             {renderIsLoggedIn()}
-            {/* <Link to='/login' className="app__header-option">
-                <AiOutlineLogin />
-                <span>Login</span>
-            </Link> */}
             <Link to='/cart' className="app__header-option">
                 <AiOutlineShoppingCart />
                 <span>Cart</span>
             </Link>
+            <div className="app__header-cart">{quantity}</div>
         </div>
     );
 };

@@ -1,0 +1,133 @@
+.app__cart {
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+    padding: 1.5rem;
+    width: 100%;
+    min-height: 30vh;
+    gap: 3rem;
+}
+
+.app__cart > span {
+    margin-left: auto;
+    font-family: var(--ff-merriweather-bold);
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.app__cart > button {
+    margin-left: auto;
+}
+
+.app__cart-item {
+    display: flex;
+    padding: 1.5rem;
+    gap: 5rem;
+    box-shadow: 2px 2px 10px 1px var(--color-black);
+    border-radius: 20px;
+}
+
+.app__cart-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.app__cart-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1;
+}
+
+.app__cart-content h2 {
+    font-family: var(--ff-merriweather-bold);
+    font-size: 1.5em;
+    font-weight: 900;
+}
+
+.app__cart-content span {
+    font-family: var(--ff-merriweather-black);
+    font-size: 1.1em;
+}
+
+.app__cart-content strong {
+    font-family: var(--ff-merriweather-black);
+    font-size: 1.5em;
+}
+
+.app__cart-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.app__cart-btns button,
+.app__cart > button {
+    padding: 0.75rem 0.5rem;
+    border: none;
+    background: var(--color-orange);
+    color: var(--color-black);
+    font-family: var(--ff-merriweather-regular);
+    font-size: 1.1em;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.app__cart-btns button:hover,
+.app__cart > button:hover {
+    transform: scale(1.1);
+    background: var(--color-black);
+    color: var(--color-orange);
+}
+
+.btn-disabled {
+    cursor: not-allowed !important;
+    transition: none !important;
+}
+
+.btn-disabled:hover {
+    transform: none !important;
+    background: var(--color-orange) !important;
+    color: var(--color-black) !important;
+}
+
+@media screen and (max-width: 600px) {
+    .app__cart-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .app__cart-item img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .app__cart-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .app__cart-content h2 {
+        font-size: 1.3em;
+    }
+    
+    .app__cart-content span {
+        font-size: 1em;
+    }
+    
+    .app__cart-content strong {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .app__cart > span {
+        font-size: 1.2em;
+    }
+}

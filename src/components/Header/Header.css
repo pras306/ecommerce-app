@@ -62,6 +62,17 @@
     height: 30px;
 }
 
+.app__header-cart {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    border-radius: 50%;
+    background: var(--color-pink);
+    color: var(--color-teal);
+    padding: 0.1rem 0.2rem;
+    margin-top: 0.4rem;
+}
+
 .app__header-logged {
     display: flex;
     flex-direction: column;
@@ -91,6 +102,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .app__header-cart {
+        right: 5px;
     }
 }
 
