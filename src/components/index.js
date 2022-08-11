@@ -5,3 +5,5 @@ export { default as Register } from './Register/Register';
 export { default as ProductCard } from './ProductCard/ProductCard';
 export { default as ProductList } from './ProductList/ProductList';
 export { default as ImageSlider } from './ImageSlider/ImageSlider';
+export { default as Modal } from './Modal/Modal';
+export { default as Loader } from './Loader/Loader';
