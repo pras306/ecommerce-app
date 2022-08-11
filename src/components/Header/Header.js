@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Header.css';
-import { signOut } from '../../features/User/UserSlice';
+import { openModal } from '../../features/Modal/ModalSlice';
 
 const Header = () => {
     const { username, email, userId } = useSelector(store => store.user);
@@ -12,9 +12,14 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const handleLogOut = () => {
-        dispatch(signOut());
-        alert('You have successfully signed out.');
-    }
+        let modal = {
+            title: 'Confirm User logout',
+            content: 'Are you sure you want to sign out?',
+            componentName: 'Header',
+            isOpen: true
+        };
+        dispatch(openModal(modal));
+    };
 
     const renderIsLoggedIn = () => {
         if(username || email || userId) {

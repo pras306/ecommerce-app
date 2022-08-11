@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './Cart.css';
-import { clearCart, removeItems } from '../../features/Cart/CartSlice';
+import { removeItems } from '../../features/Cart/CartSlice';
+import { openModal } from '../../features/Modal/ModalSlice';
 
 const Cart = () => {
     const { cartItems, amount, quantity } = useSelector(store => store.cart);
@@ -13,7 +14,13 @@ const Cart = () => {
     };
 
     const handleClearCart = () => {
-        dispatch(clearCart());
+        let modal = {
+            title: 'Confirm Clear Cart',
+            content: 'Are you sure you want to clear the cart?',
+            componentName: 'Cart',
+            isOpen: true
+        };
+        dispatch(openModal(modal));
     }
 
     const renderComponent = () => {
