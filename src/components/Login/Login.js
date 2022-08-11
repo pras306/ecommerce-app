@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import './Login.css';
 import { auth, provider } from '../../api/firebase';
 import { signIn } from '../../features/User/UserSlice';
+import { openLoader, closeLoader } from '../../features/Loader/LoaderSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -46,8 +47,11 @@ const Login = () => {
             return;
         }
 
+        dispatch(openLoader());
+
         signInWithEmailAndPassword(auth, email, password)
         .then(result => {
+            dispatch(closeLoader());
             let user = {
                 username: result.user.displayName,
                 email: result.user.email,
@@ -57,13 +61,16 @@ const Login = () => {
             navigate('/');
         })
         .catch(err => {
+            dispatch(closeLoader());
             alert(err.message);
         });
     };
 
     const handleGoogleSignIn = () => {
+        dispatch(openLoader());
         signInWithPopup(auth, provider)
         .then(result => {
+            dispatch(closeLoader());
             let user = {
                 username: result.user.displayName,
                 email: result.user.email,
@@ -73,6 +80,7 @@ const Login = () => {
             navigate('/');
         })
         .catch(err => {
+            dispatch(closeLoader());
             alert(err.message);
         });
     }

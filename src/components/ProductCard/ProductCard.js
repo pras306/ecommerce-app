@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import "./ProductCard.css";
 import { useGetProductQuery } from '../../features/Products/ProductsSlice';
 import { addItems } from '../../features/Cart/CartSlice';
+import { openLoader, closeLoader } from '../../features/Loader/LoaderSlice';
 import { ImageSlider } from '../index';
 
 const ProductCard = () => {
@@ -62,8 +63,9 @@ const ProductCard = () => {
     }
 
     const renderComponent = () => {
-        if(isFetching) return <div>Loading...</div>
+        if(isFetching) dispatch(openLoader());
         else {
+            dispatch(closeLoader());
             return (
                 <div className='app__product'>
                     <div className="app__product-image">

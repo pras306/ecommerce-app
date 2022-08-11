@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import './Register.css';
 import { auth } from '../../api/firebase';
 import { signIn } from '../../features/User/UserSlice';
+import { openLoader, closeLoader } from '../../features/Loader/LoaderSlice';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -45,8 +46,10 @@ const Register = () => {
             return;
         }
 
+        dispatch(openLoader());
         createUserWithEmailAndPassword(auth, email, password)
         .then(result => {
+            dispatch(closeLoader());
             let user = {
                 username: result.user.displayName,
                 email: result.user.email,
@@ -57,6 +60,7 @@ const Register = () => {
             navigate('/');
         })
         .catch(error => {
+            dispatch(closeLoader());
             alert(error.message);
         });
     };
