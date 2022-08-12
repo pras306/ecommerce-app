@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Home.css';
 import { useGetProductsQuery } from '../../features/Products/ProductsSlice';
@@ -10,28 +10,31 @@ const Home = () => {
     const { data: productList, isFetching } = useGetProductsQuery();
     const [products, setProducts] = useState([]);
     const dispatch = useDispatch();
+    const { term } = useSelector(store => store.productFilter);
 
     useEffect(() => {
-        setProducts(productList?.products);
-    }, [productList]);
+        if(term.length === 0) {
+            setProducts(productList?.products);
+        } else {
+            const filteredProducts = productList?.products.filter(product => {
+                return product.title.toLowerCase().includes(term.toLowerCase()) || product.brand.toLowerCase().includes(term.toLowerCase()) || product.category.toLowerCase().includes(term.toLowerCase());
+            });
+            setProducts(filteredProducts);
+        }
+    }, [productList, term]);
 
-    const renderPage = () => {
+    useEffect(() => {
         if(isFetching) {
             dispatch(openLoader());
         } else {
             dispatch(closeLoader());
-            return (
-                <div className='app__home'>
-                    <ProductList products={products} />
-                </div>
-            );
         }
-    }
+    }, [isFetching, dispatch]);
 
     return (
-        <>
-            {renderPage()}
-        </>
+        <div className='app__home'>
+            <ProductList products={products} />
+        </div>
     );
 };
 

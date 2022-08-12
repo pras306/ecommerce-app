@@ -5,6 +5,7 @@ import { productsApi } from './features/Products/ProductsSlice';
 import cartReducer from './features/Cart/CartSlice';
 import modalReducer from './features/Modal/ModalSlice';
 import loaderReducer from './features/Loader/LoaderSlice';
+import productFilterReducer from './features/Products/ProductsFilterSlice';
 
 const authMiddleware = ({ getState }) => {
     return next => action => {
@@ -31,7 +32,8 @@ export const store = configureStore({
         [productsApi.reducerPath]: productsApi.reducer,
         cart: cartReducer,
         modal: modalReducer,
-        loader: loaderReducer
+        loader: loaderReducer,
+        productFilter: productFilterReducer
     },
     preloadedState: loadStore(),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authMiddleware).concat(productsApi.middleware)
