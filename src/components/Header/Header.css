@@ -34,19 +34,6 @@
     flex: 1;
 }
 
-.app__header-search input {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 15px;
-    border: none;
-    font-family: var(--ff-merriweather-regular);
-    font-size: 1em;
-}
-
-.app__header-search input:focus {
-    outline-color: var(--color-pink);
-}
-
 .app__header-option {
     display: flex;
     align-items: center;

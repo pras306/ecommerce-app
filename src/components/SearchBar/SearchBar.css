@@ -1,0 +1,19 @@
+.app__search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.app__search input {
+    width: 100%;
+    padding: 1rem;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: none;
+    font-family: var(--ff-merriweather-regular);
+    font-size: 1em;
+}
+
+.app__search input:focus {
+    outline-color: var(--color-pink);
+}

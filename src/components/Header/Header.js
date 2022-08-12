@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import './Header.css';
 import { openModal } from '../../features/Modal/ModalSlice';
+import { SearchBar } from '../index';
 
 const Header = () => {
     const { username, email, userId } = useSelector(store => store.user);
@@ -47,7 +48,7 @@ const Header = () => {
                 <AiFillShopping />
             </Link>
             <div className="app__header-search">
-                <input type={'text'} placeholder='Search for Products' />
+                <SearchBar />
             </div>
             {renderIsLoggedIn()}
             <Link to='/cart' className="app__header-option">
