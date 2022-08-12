@@ -14,13 +14,15 @@ const Cart = () => {
     };
 
     const handleClearCart = () => {
-        let modal = {
-            title: 'Confirm Clear Cart',
-            content: 'Are you sure you want to clear the cart?',
-            componentName: 'Cart',
-            isOpen: true
-        };
-        dispatch(openModal(modal));
+        if(quantity > 0) {
+            let modal = {
+                title: 'Confirm Clear Cart',
+                content: 'Are you sure you want to clear the cart?',
+                componentName: 'Cart',
+                isOpen: true
+            };
+            dispatch(openModal(modal));
+        }
     }
 
     const renderComponent = () => {

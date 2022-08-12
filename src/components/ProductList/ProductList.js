@@ -47,7 +47,7 @@ const ProductList = ({ products }) => {
                             <div className="app__product-list-price">
                                 <span>Original Price: <span className='app__product-list-money'>${product.price.toFixed(2)}</span></span>
                                 <span>You Avail: <span className='app__product-list-money'>${calculateDiscountPrice(product.price, product.discountPercentage)}</span></span>
-                                <span>You pay: <span className='app__product-list-money'>${product.price - calculateDiscountPrice(product.price, product.discountPercentage)}</span></span>
+                                <span>You pay: <span className='app__product-list-money'>${(product.price - calculateDiscountPrice(product.price, product.discountPercentage)).toFixed(2)}</span></span>
                             </div>
                             <div className="app__product-list-footer">
                                 <span>Brand: <strong>{product.brand}</strong> </span>
