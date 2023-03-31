@@ -1,3 +1,10 @@
+.app__product-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5rem;
+}
+
 .app__product {
     display: flex;
     margin: 2.5rem;
@@ -99,6 +106,12 @@
     .app__product-image {
         width: 100%;
         height: 30vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app__product {
+        margin: 0.75rem;
     }
 }
 

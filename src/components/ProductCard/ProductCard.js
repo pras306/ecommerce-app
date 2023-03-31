@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsStarFill, BsStarHalf, BsStar, BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,14 @@ const ProductCard = () => {
     const params = useParams();
     const { data: product, isFetching  } = useGetProductQuery(params.id);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(isFetching) {
+            dispatch(openLoader());
+        } else {
+            dispatch(closeLoader());
+        }
+    }, [isFetching, dispatch]);
 
     const renderRating = (rating) => {
         let ratingArray = new Array(5).fill(0).map((_, i) => {
@@ -48,7 +56,7 @@ const ProductCard = () => {
             };
             setQuantity(quantity - 1);
         }
-    }
+    };
 
     const handleAddToCart = () => {
         let item = {
@@ -56,16 +64,13 @@ const ProductCard = () => {
             image: product.thumbnail,
             title: product.title,
             quantity: quantity,
-            amount: product.price - calculateDiscountPrice(product.price, product.discountPercentage)
+            amount: Number(product.price - calculateDiscountPrice(product.price, product.discountPercentage)).toFixed(2)
         };
-
         dispatch(addItems(item));
-    }
+    };
 
     const renderComponent = () => {
-        if(isFetching) dispatch(openLoader());
-        else {
-            dispatch(closeLoader());
+        if(!isFetching) { 
             return (
                 <div className='app__product'>
                     <div className="app__product-image">
@@ -81,7 +86,7 @@ const ProductCard = () => {
                         <div className="app__product-price">
                             <span>Original Price: <span className='app__product-money'>${product.price.toFixed(2)}</span></span>
                             <span>You Avail: <span className='app__product-money'>${calculateDiscountPrice(product.price, product.discountPercentage)}</span></span>
-                            <span>You pay: <span className='app__product-money'>${product.price - calculateDiscountPrice(product.price, product.discountPercentage)}</span></span>
+                            <span>You pay: <span className='app__product-money'>${(product.price - calculateDiscountPrice(product.price, product.discountPercentage)).toFixed(2)}</span></span>
                         </div>
                         <div className="app__product-quantity">
                             <span>Quantity: </span>
@@ -94,14 +99,14 @@ const ProductCard = () => {
                         </div>
                     </div>
                 </div>
-            );
+            ); 
         }
-    }
+    };
 
     return (
-        <>
+        <div className='app__product-card'>
             {renderComponent()}
-        </>
+        </div>
     );
 };
 
