@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Cart.css';
 import { removeItems } from '../../features/Cart/CartSlice';
 import { openModal } from '../../features/Modal/ModalSlice';
+import { openLoader, closeLoader } from '../../features/Loader/LoaderSlice';
 import { STRIPE_BASE_URL, STRIPE_CREATE_PAYMENT_INTENT } from '../../api/requests';
 import getStripe from '../../api/stripe';
 
@@ -17,19 +18,26 @@ const Cart = () => {
     };
 
     const handleCheckout = async () => {
-        const stripe = await getStripe();
+        try {
+            dispatch(openLoader());
+            const stripe = await getStripe();
 
-        const response = await axios.post(STRIPE_BASE_URL + STRIPE_CREATE_PAYMENT_INTENT, { 
-            cartItems: cartItems
-        });
+            const response = await axios.post(STRIPE_BASE_URL + STRIPE_CREATE_PAYMENT_INTENT, { 
+                cartItems: cartItems
+            });
 
-        if(response.status === 500) return;
+            if(response.status === 500) return;
 
-        console.log(response);
+            const data = await response.data;
 
-        const data = await response.data;
+            dispatch(closeLoader());
 
-        stripe.redirectToCheckout({ sessionId: data.id });
+            stripe.redirectToCheckout({ sessionId: data.id });
+
+        } catch(err) {
+            console.log(err.message);
+            dispatch(closeLoader());
+        }
     };
 
     const handleClearCart = () => {
