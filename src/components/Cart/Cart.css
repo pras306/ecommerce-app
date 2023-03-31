@@ -63,8 +63,18 @@
     padding: 1.5rem;
 }
 
+.app__cart-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.app__cart-buttons > button {
+    margin: 0 1.5rem;
+}
+
 .app__cart-btns button,
-.app__cart > button {
+.app__cart-buttons > button {
     padding: 0.75rem 0.5rem;
     border: none;
     background: var(--color-orange);
@@ -77,7 +87,7 @@
 }
 
 .app__cart-btns button:hover,
-.app__cart > button:hover {
+.app__cart-buttons > button:hover {
     transform: scale(1.1);
     background: var(--color-black);
     color: var(--color-orange);

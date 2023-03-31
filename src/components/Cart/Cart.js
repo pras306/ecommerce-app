@@ -1,9 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 import './Cart.css';
 import { removeItems } from '../../features/Cart/CartSlice';
 import { openModal } from '../../features/Modal/ModalSlice';
+import { STRIPE_BASE_URL, STRIPE_CREATE_PAYMENT_INTENT } from '../../api/requests';
+import getStripe from '../../api/stripe';
 
 const Cart = () => {
     const { cartItems, amount, quantity } = useSelector(store => store.cart);
@@ -11,6 +14,22 @@ const Cart = () => {
 
     const handleRemoveItem = (id) => {
         dispatch(removeItems(id))
+    };
+
+    const handleCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await axios.post(STRIPE_BASE_URL + STRIPE_CREATE_PAYMENT_INTENT, { 
+            cartItems: cartItems
+        });
+
+        if(response.status === 500) return;
+
+        console.log(response);
+
+        const data = await response.data;
+
+        stripe.redirectToCheckout({ sessionId: data.id });
     };
 
     const handleClearCart = () => {
@@ -23,10 +42,10 @@ const Cart = () => {
             };
             dispatch(openModal(modal));
         }
-    }
+    };
 
     const renderComponent = () => {
-        if(cartItems.length === 0) {
+        if(cartItems?.length === 0) {
             return (
                 <div className='app__cart-item' >
                     <div className='app__cart-content'>
@@ -62,7 +81,10 @@ const Cart = () => {
             {renderComponent()}
             <span>Total Items: <strong>{quantity}</strong></span>
             <span>Total Price: <strong>$ {amount}</strong></span>
-            <button onClick={handleClearCart} className={quantity === 0 ? 'btn-disabled' : ''} >Clear Cart</button>
+            <div className="app__cart-buttons">
+                <button onClick={handleCheckout} className={quantity === 0 ? 'btn-disabled' : ''}>Proceed to buy</button> 
+                <button onClick={handleClearCart} className={quantity === 0 ? 'btn-disabled' : ''} >Clear Cart</button>
+            </div>
         </div>
     );
 };

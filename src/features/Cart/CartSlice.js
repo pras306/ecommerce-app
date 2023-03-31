@@ -19,7 +19,7 @@ const cartSlice = createSlice({
                 if(item.id === action.payload.id) {
                     checkItem = true;
                     item.quantity += action.payload.quantity;
-                    item.amount += action.payload.amount;
+                    item.amount = Number(action.payload.amount).toFixed(2);
                 }
                 return item;
             });
