@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillShopping, AiOutlineLogin, AiOutlineShoppingCart, AiOutlineLogout } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, matchPath } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './Header.css';
@@ -8,6 +8,10 @@ import { openModal } from '../../features/Modal/ModalSlice';
 import { SearchBar } from '../index';
 
 const Header = () => {
+    const { pathname } = useLocation();
+    const route = matchPath({
+        path: '/'
+    }, pathname);
     const { username, email, userId } = useSelector(store => store.user);
     const { quantity } = useSelector(store => store.cart);
     const dispatch = useDispatch();
@@ -48,7 +52,9 @@ const Header = () => {
                 <AiFillShopping />
             </Link>
             <div className="app__header-search">
-                <SearchBar />
+                {
+                    route && <SearchBar />
+                }
             </div>
             {renderIsLoggedIn()}
             <Link to='/cart' className="app__header-option">
