@@ -1,0 +1,57 @@
+.app__checkout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__checkout-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-white);
+    min-width: 25vw;
+    border-radius: 20px;
+    box-shadow: 2px 1px 15px 2px var(--color-charcoal);
+}
+
+.app__checkout-icon {
+    margin: 1.5rem;
+}
+
+.app__checkout-icon svg {
+    font-size: 2em;
+}
+
+.success {
+    color: var(--color-blue);
+}
+
+.error {
+    color: var(--color-red);
+}
+
+.app__checkout-message {
+    font-family: var(--ff-merriweather-bold);
+    margin: 1.5rem;
+    font-size: 1.5em;
+}
+
+.app__checkout-card p {
+    font-family: var(--ff-merriweather-regular);
+    margin: 1.25rem;
+    font-size: 1.25em;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 600px) {
+    .app__checkout-card {
+        width: 75vw;
+    }
+
+    .app__checkout-card p {
+        font-size: 1em;
+        text-align: center;
+    }
+}

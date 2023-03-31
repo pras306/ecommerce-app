@@ -8,3 +8,4 @@ export { default as ImageSlider } from './ImageSlider/ImageSlider';
 export { default as Modal } from './Modal/Modal';
 export { default as Loader } from './Loader/Loader';
 export { default as SearchBar } from './SearchBar/SearchBar';
+export { default as Checkout} from './Checkout/Checkout';
