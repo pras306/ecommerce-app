@@ -1,9 +1,14 @@
 # E-Commerce Web App
 
+![ECommerceApp](src/assets/images/ecommerce_app.png)
+
+---
+
 ### Table of Contents
 
 - [Description](#description)
 - [How to use](#how-to-use)
+- [API Reference](#api-reference)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -11,21 +16,22 @@
 
 ## Description
 
-A simple e-commerce web app that allows users to create and manage products/ orders. 
-
-This app is currently in development stage and the readme will updated once the site is ready to go live.
+A simple e-commerce web app that allows users to create and manage orders. Products List is obtained from [Dummy JSON](https://dummyjson.com/)
 
 #### Technologies
 
 - React JS
 - Redux Toolkit
 - Firebase
+- Stripe
 
 [Back to the Top](#e-commerce-web-app)
 
 ---
 
 ## How to use
+
+The website is currently published at [E-Commerce Site](https://dummy-ecommerce-app.netlify.app/)
 
 Clone the project 
 
@@ -52,6 +58,25 @@ Start the server
 ```
 
 [Back to the Top](#e-commerce-web-app)
+
+---
+
+## API Reference
+
+- [Dummy JSON API](https://dummyjson.com/)
+- [STRIPE API](https://stripe.com/docs/api)
+- Custom Proxy Server for hiding API key - [https://api-proxy-server-6xbe.onrender.com/api/v1](https://api-proxy-server-6xbe.onrender.com/api/v1)
+
+#### POST - Create Stripe Payment Intent
+
+```http
+  POST /stripe/create-payment-intent
+```
+
+|Request Body | Type     | Description                                        |
+| :---------- | :------- | :------------------------------------------------- |
+| `cartItems` | `array`  | **Required**. an array of all the products in cart |
+
 
 ---
 
